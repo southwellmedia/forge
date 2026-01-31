@@ -1,0 +1,86 @@
+/* Shadow Definitions - Clean Modern Design System */
+/* Neutral shadows for a crisp, professional look */
+
+:root {
+  /* ===== Standard Box Shadows ===== */
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+  --shadow: 0 4px 6px -1px oklch(0 0 0 / 0.1), 0 2px 4px -2px oklch(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px oklch(0 0 0 / 0.1), 0 4px 6px -4px oklch(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px oklch(0 0 0 / 0.1), 0 8px 10px -6px oklch(0 0 0 / 0.1);
+  --shadow-xl: 0 25px 50px -12px oklch(0 0 0 / 0.25);
+  --shadow-2xl: 0 25px 50px -12px oklch(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 oklch(0 0 0 / 0.05);
+  --shadow-none: 0 0 #0000;
+
+  /* ===== Soft Shadows - Diffused, subtle ===== */
+  --shadow-soft-xs: 0 2px 4px -1px oklch(0 0 0 / 0.06);
+  --shadow-soft-sm: 0 2px 8px -2px oklch(0 0 0 / 0.08);
+  --shadow-soft: 0 4px 12px -4px oklch(0 0 0 / 0.1);
+  --shadow-soft-md: 0 6px 16px -6px oklch(0 0 0 / 0.12);
+  --shadow-soft-lg: 0 10px 24px -8px oklch(0 0 0 / 0.14);
+  --shadow-soft-xl: 0 16px 40px -12px oklch(0 0 0 / 0.16);
+
+  /* ===== Glow Shadows - For interactive elements ===== */
+  --shadow-glow-primary: 0 0 0 3px oklch(0.55 0.15 250 / 0.15);
+  --shadow-glow-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.15);
+  --shadow-glow-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.15);
+  --shadow-glow-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.15);
+
+  /* ===== Lift Shadows - For hover states ===== */
+  --shadow-lift-sm: 0 4px 8px -2px oklch(0 0 0 / 0.12), 0 2px 4px -1px oklch(0 0 0 / 0.08);
+  --shadow-lift: 0 8px 16px -4px oklch(0 0 0 / 0.14), 0 4px 6px -2px oklch(0 0 0 / 0.1);
+  --shadow-lift-lg: 0 12px 24px -6px oklch(0 0 0 / 0.16), 0 6px 10px -4px oklch(0 0 0 / 0.1);
+
+  /* ===== Ring (Focus) Shadows ===== */
+  --ring-offset-width: 2px;
+  --ring-offset-color: white;
+  --ring-width: 2px;
+  --ring-color: oklch(0.55 0.15 250);
+
+  /* Focus rings */
+  --ring-soft: 0 0 0 3px oklch(0.55 0.15 250 / 0.2);
+  --ring-soft-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.2);
+  --ring-soft-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.2);
+  --ring-soft-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.2);
+}
+
+/* Dark mode shadow adjustments */
+.dark {
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.2);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.3), 0 1px 2px -1px oklch(0 0 0 / 0.3);
+  --shadow: 0 4px 6px -1px oklch(0 0 0 / 0.3), 0 2px 4px -2px oklch(0 0 0 / 0.3);
+  --shadow-md: 0 10px 15px -3px oklch(0 0 0 / 0.35), 0 4px 6px -4px oklch(0 0 0 / 0.35);
+  --shadow-lg: 0 20px 25px -5px oklch(0 0 0 / 0.4), 0 8px 10px -6px oklch(0 0 0 / 0.4);
+  --shadow-xl: 0 25px 50px -12px oklch(0 0 0 / 0.5);
+  --shadow-2xl: 0 25px 50px -12px oklch(0 0 0 / 0.5);
+  --shadow-inner: inset 0 2px 4px 0 oklch(0 0 0 / 0.2);
+
+  /* Dark mode soft shadows */
+  --shadow-soft-xs: 0 2px 4px -1px oklch(0 0 0 / 0.25);
+  --shadow-soft-sm: 0 2px 8px -2px oklch(0 0 0 / 0.3);
+  --shadow-soft: 0 4px 12px -4px oklch(0 0 0 / 0.35);
+  --shadow-soft-md: 0 6px 16px -6px oklch(0 0 0 / 0.4);
+  --shadow-soft-lg: 0 10px 24px -8px oklch(0 0 0 / 0.45);
+  --shadow-soft-xl: 0 16px 40px -12px oklch(0 0 0 / 0.5);
+
+  /* Dark mode glow shadows */
+  --shadow-glow-primary: 0 0 0 3px oklch(0.55 0.15 250 / 0.25);
+  --shadow-glow-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.25);
+  --shadow-glow-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.25);
+  --shadow-glow-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.25);
+
+  /* Dark mode lift shadows */
+  --shadow-lift-sm: 0 4px 8px -2px oklch(0 0 0 / 0.4), 0 2px 4px -1px oklch(0 0 0 / 0.35);
+  --shadow-lift: 0 8px 16px -4px oklch(0 0 0 / 0.45), 0 4px 6px -2px oklch(0 0 0 / 0.4);
+  --shadow-lift-lg: 0 12px 24px -6px oklch(0 0 0 / 0.5), 0 6px 10px -4px oklch(0 0 0 / 0.45);
+
+  /* Dark mode ring colors */
+  --ring-offset-color: oklch(0.13 0 0);
+  --ring-color: oklch(0.55 0.15 250);
+
+  --ring-soft: 0 0 0 3px oklch(0.55 0.15 250 / 0.3);
+  --ring-soft-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.3);
+  --ring-soft-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.3);
+  --ring-soft-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.3);
+}

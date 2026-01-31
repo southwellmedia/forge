@@ -1,0 +1,64 @@
+/* Design Tokens Index - "Soft & Organic" Design System */
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./shadows.css";
+
+:root {
+  /* ===== Border Radius - Generous organic curves ===== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius: 0.375rem;       /* 6px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;        /* 16px - primary for cards, alerts */
+  --radius-2xl: 1.25rem;    /* 20px - elevated cards, modals */
+  --radius-3xl: 1.5rem;     /* 24px - large containers */
+  --radius-4xl: 2rem;       /* 32px - extra large */
+  --radius-full: 9999px;    /* Full pill shape */
+
+  /* ===== Duration - Smooth, natural timing ===== */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-400: 400ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* ===== Easing - Natural, spring-like motion ===== */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spring easing - bouncy, organic feel */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring-soft: cubic-bezier(0.22, 1.2, 0.36, 1);
+  --ease-spring-gentle: cubic-bezier(0.25, 1.1, 0.5, 1);
+
+  /* Smooth easing - fluid, elegant */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth-in: cubic-bezier(0.55, 0, 0.45, 1);
+  --ease-smooth-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* Pop easing - for attention-grabbing */
+  --ease-pop: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ===== Z-Index Scale ===== */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-auto: auto;
+
+  /* ===== Animation Keyframe Variables ===== */
+  /* Shimmer animation for skeleton loading */
+  --shimmer-angle: 90deg;
+  --shimmer-speed: 1.5s;
+}

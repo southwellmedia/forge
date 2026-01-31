@@ -1,0 +1,77 @@
+/* Southwell Default Theme - Light Mode */
+/* "Soft & Organic" Design System */
+@import "../tokens/index.css";
+
+:root {
+  /* ===== Semantic Colors - Light Mode ===== */
+  --background: oklch(0.995 0.002 60);
+  --foreground: var(--color-gray-950);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--color-gray-950);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--color-gray-950);
+
+  --primary: var(--color-brand-600);
+  --primary-foreground: white;
+
+  --secondary: oklch(0.96 0.006 60);
+  --secondary-foreground: var(--color-gray-900);
+
+  --muted: oklch(0.96 0.006 60);
+  --muted-foreground: var(--color-gray-500);
+
+  --accent: oklch(0.96 0.006 60);
+  --accent-foreground: var(--color-gray-900);
+
+  --destructive: var(--color-error-500);
+  --destructive-foreground: white;
+
+  /* Soft semantic state colors */
+  --success: var(--color-success-500);
+  --success-foreground: white;
+  --success-soft: var(--color-success-50);
+  --success-soft-foreground: var(--color-success-700);
+
+  --warning: var(--color-warning-500);
+  --warning-foreground: white;
+  --warning-soft: var(--color-warning-50);
+  --warning-soft-foreground: var(--color-warning-700);
+
+  --error: var(--color-error-500);
+  --error-foreground: white;
+  --error-soft: var(--color-error-50);
+  --error-soft-foreground: var(--color-error-700);
+
+  --info: var(--color-info-500);
+  --info-foreground: white;
+  --info-soft: var(--color-info-50);
+  --info-soft-foreground: var(--color-info-700);
+
+  --border: oklch(0.90 0.006 60);
+  --input: oklch(0.90 0.006 60);
+  --ring: var(--color-brand-500);
+
+  /* ===== Component-specific tokens ===== */
+  --radius: var(--radius-lg);
+
+  /* Card styling */
+  --card-shadow: var(--shadow-soft-sm);
+  --card-shadow-hover: var(--shadow-soft-md);
+  --card-radius: var(--radius-2xl);
+
+  /* Badge styling */
+  --badge-radius: var(--radius-full);
+
+  /* Alert styling */
+  --alert-radius: var(--radius-xl);
+
+  /* Progress styling */
+  --progress-radius: var(--radius-full);
+  --progress-track: oklch(0.94 0.006 60);
+
+  /* Skeleton styling */
+  --skeleton-base: oklch(0.92 0.006 60);
+  --skeleton-highlight: oklch(0.96 0.004 60);
+}

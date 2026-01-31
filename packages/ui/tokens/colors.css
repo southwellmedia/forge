@@ -1,0 +1,137 @@
+/* Design System Colors - OKLCH Color Space */
+/* Clean, modern aesthetic inspired by Vercel/shadcn */
+
+:root {
+  /* Brand Primary - Clean blue */
+  --color-brand-50: oklch(0.97 0.01 250);
+  --color-brand-100: oklch(0.93 0.02 250);
+  --color-brand-200: oklch(0.86 0.04 250);
+  --color-brand-300: oklch(0.76 0.08 250);
+  --color-brand-400: oklch(0.66 0.12 250);
+  --color-brand-500: oklch(0.55 0.15 250);
+  --color-brand-600: oklch(0.48 0.14 250);
+  --color-brand-700: oklch(0.40 0.12 250);
+  --color-brand-800: oklch(0.33 0.10 250);
+  --color-brand-900: oklch(0.27 0.08 250);
+  --color-brand-950: oklch(0.20 0.06 250);
+
+  /* Neutral Gray - Pure, no color cast */
+  --color-gray-50: oklch(0.985 0 0);
+  --color-gray-100: oklch(0.97 0 0);
+  --color-gray-200: oklch(0.92 0 0);
+  --color-gray-300: oklch(0.87 0 0);
+  --color-gray-400: oklch(0.71 0 0);
+  --color-gray-500: oklch(0.55 0 0);
+  --color-gray-600: oklch(0.45 0 0);
+  --color-gray-700: oklch(0.37 0 0);
+  --color-gray-800: oklch(0.27 0 0);
+  --color-gray-900: oklch(0.20 0 0);
+  --color-gray-950: oklch(0.13 0 0);
+
+  /* Success - Clean green */
+  --color-success-50: oklch(0.97 0.02 145);
+  --color-success-100: oklch(0.94 0.04 145);
+  --color-success-200: oklch(0.88 0.08 145);
+  --color-success-300: oklch(0.78 0.12 145);
+  --color-success-400: oklch(0.68 0.15 145);
+  --color-success-500: oklch(0.60 0.16 145);
+  --color-success-600: oklch(0.52 0.14 145);
+  --color-success-700: oklch(0.44 0.12 145);
+  --color-success-800: oklch(0.36 0.10 145);
+  --color-success-900: oklch(0.30 0.08 145);
+
+  /* Warning - Amber/orange */
+  --color-warning-50: oklch(0.98 0.02 85);
+  --color-warning-100: oklch(0.95 0.04 80);
+  --color-warning-200: oklch(0.90 0.08 75);
+  --color-warning-300: oklch(0.83 0.12 70);
+  --color-warning-400: oklch(0.78 0.14 65);
+  --color-warning-500: oklch(0.75 0.15 60);
+  --color-warning-600: oklch(0.65 0.14 55);
+  --color-warning-700: oklch(0.55 0.12 50);
+  --color-warning-800: oklch(0.45 0.10 45);
+  --color-warning-900: oklch(0.38 0.08 40);
+
+  /* Error - Clean red */
+  --color-error-50: oklch(0.97 0.015 25);
+  --color-error-100: oklch(0.94 0.03 25);
+  --color-error-200: oklch(0.88 0.06 25);
+  --color-error-300: oklch(0.78 0.12 25);
+  --color-error-400: oklch(0.68 0.16 25);
+  --color-error-500: oklch(0.60 0.18 25);
+  --color-error-600: oklch(0.52 0.16 25);
+  --color-error-700: oklch(0.44 0.14 25);
+  --color-error-800: oklch(0.36 0.12 25);
+  --color-error-900: oklch(0.30 0.10 25);
+
+  /* Info - Blue */
+  --color-info-50: oklch(0.97 0.015 240);
+  --color-info-100: oklch(0.94 0.03 240);
+  --color-info-200: oklch(0.88 0.06 240);
+  --color-info-300: oklch(0.78 0.10 240);
+  --color-info-400: oklch(0.68 0.14 240);
+  --color-info-500: oklch(0.58 0.15 240);
+  --color-info-600: oklch(0.50 0.13 240);
+  --color-info-700: oklch(0.43 0.11 240);
+  --color-info-800: oklch(0.36 0.09 240);
+  --color-info-900: oklch(0.30 0.07 240);
+
+  /* Gradient Presets */
+  --gradient-soft-primary: linear-gradient(135deg, oklch(0.58 0.14 250) 0%, oklch(0.48 0.15 250) 100%);
+  --gradient-soft-success: linear-gradient(135deg, oklch(0.62 0.15 145) 0%, oklch(0.52 0.14 145) 100%);
+  --gradient-soft-warning: linear-gradient(135deg, oklch(0.76 0.14 60) 0%, oklch(0.66 0.13 55) 100%);
+  --gradient-soft-error: linear-gradient(135deg, oklch(0.62 0.17 25) 0%, oklch(0.52 0.16 25) 100%);
+  --gradient-soft-muted: linear-gradient(135deg, oklch(0.96 0 0) 0%, oklch(0.93 0 0) 100%);
+
+  /* Soft Semantic Colors - for badges, alerts, backgrounds */
+  --color-success-soft: oklch(0.96 0.03 145);
+  --color-success-soft-foreground: oklch(0.40 0.12 145);
+  --color-warning-soft: oklch(0.96 0.03 75);
+  --color-warning-soft-foreground: oklch(0.45 0.12 55);
+  --color-error-soft: oklch(0.96 0.02 25);
+  --color-error-soft-foreground: oklch(0.45 0.14 25);
+  --color-info-soft: oklch(0.96 0.02 240);
+  --color-info-soft-foreground: oklch(0.40 0.12 240);
+
+  /* Shimmer gradient for skeleton loading */
+  --gradient-shimmer: linear-gradient(
+    90deg,
+    oklch(0.92 0 0 / 0) 0%,
+    oklch(0.96 0 0 / 0.5) 50%,
+    oklch(0.92 0 0 / 0) 100%
+  );
+}
+
+/* Dark mode color adjustments */
+.dark {
+  /* Pure dark grays */
+  --color-gray-50: oklch(0.18 0 0);
+  --color-gray-100: oklch(0.20 0 0);
+  --color-gray-200: oklch(0.24 0 0);
+  --color-gray-300: oklch(0.30 0 0);
+  --color-gray-400: oklch(0.45 0 0);
+  --color-gray-500: oklch(0.55 0 0);
+  --color-gray-600: oklch(0.65 0 0);
+  --color-gray-700: oklch(0.75 0 0);
+  --color-gray-800: oklch(0.85 0 0);
+  --color-gray-900: oklch(0.92 0 0);
+  --color-gray-950: oklch(0.97 0 0);
+
+  /* Dark mode soft semantic colors */
+  --color-success-soft: oklch(0.22 0.04 155);
+  --color-success-soft-foreground: oklch(0.75 0.12 145);
+  --color-warning-soft: oklch(0.22 0.04 65);
+  --color-warning-soft-foreground: oklch(0.80 0.12 70);
+  --color-error-soft: oklch(0.22 0.04 25);
+  --color-error-soft-foreground: oklch(0.75 0.14 25);
+  --color-info-soft: oklch(0.22 0.04 235);
+  --color-info-soft-foreground: oklch(0.75 0.12 240);
+
+  /* Dark mode shimmer */
+  --gradient-shimmer: linear-gradient(
+    90deg,
+    oklch(0.24 0 0 / 0) 0%,
+    oklch(0.30 0 0 / 0.4) 50%,
+    oklch(0.24 0 0 / 0) 100%
+  );
+}

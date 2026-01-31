@@ -1,0 +1,66 @@
+/* Southwell Theme - Dark Mode */
+/* "Soft & Organic" Design System */
+
+.dark {
+  /* ===== Semantic Colors - Dark Mode ===== */
+  --background: oklch(0.12 0.003 60);
+  --foreground: oklch(0.97 0.003 60);
+
+  --card: oklch(0.15 0.004 60);
+  --card-foreground: oklch(0.97 0.003 60);
+
+  --popover: oklch(0.17 0.004 60);
+  --popover-foreground: oklch(0.97 0.003 60);
+
+  --primary: var(--color-brand-500);
+  --primary-foreground: white;
+
+  --secondary: oklch(0.22 0.006 60);
+  --secondary-foreground: oklch(0.95 0.003 60);
+
+  --muted: oklch(0.22 0.006 60);
+  --muted-foreground: oklch(0.60 0.008 60);
+
+  --accent: oklch(0.22 0.006 60);
+  --accent-foreground: oklch(0.95 0.003 60);
+
+  --destructive: var(--color-error-600);
+  --destructive-foreground: white;
+
+  /* Soft semantic state colors - Dark Mode */
+  --success: var(--color-success-400);
+  --success-foreground: oklch(0.15 0 0);
+  --success-soft: oklch(0.22 0.04 155);
+  --success-soft-foreground: var(--color-success-300);
+
+  --warning: var(--color-warning-400);
+  --warning-foreground: oklch(0.15 0 0);
+  --warning-soft: oklch(0.22 0.04 65);
+  --warning-soft-foreground: var(--color-warning-300);
+
+  --error: var(--color-error-400);
+  --error-foreground: white;
+  --error-soft: oklch(0.22 0.04 25);
+  --error-soft-foreground: var(--color-error-300);
+
+  --info: var(--color-info-400);
+  --info-foreground: oklch(0.15 0 0);
+  --info-soft: oklch(0.22 0.04 235);
+  --info-soft-foreground: var(--color-info-300);
+
+  --border: oklch(0.28 0.006 60);
+  --input: oklch(0.28 0.006 60);
+  --ring: var(--color-brand-400);
+
+  /* ===== Component-specific tokens ===== */
+  /* Card styling */
+  --card-shadow: var(--shadow-soft-sm);
+  --card-shadow-hover: var(--shadow-soft-md);
+
+  /* Progress styling */
+  --progress-track: oklch(0.25 0.006 60);
+
+  /* Skeleton styling */
+  --skeleton-base: oklch(0.22 0.006 60);
+  --skeleton-highlight: oklch(0.28 0.008 60);
+}

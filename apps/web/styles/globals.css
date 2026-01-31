@@ -1,0 +1,417 @@
+@import "tailwindcss";
+
+@source "../../../packages/ui/src/**/*.tsx";
+
+@theme {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --radius: 0.5rem;
+
+  /* ===== Shadow Tokens - Clean & Crisp ===== */
+  --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.05);
+  --shadow-card: 0 1px 3px 0 oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+  --shadow-input: inset 0 1px 2px oklch(0 0 0 / 0.05);
+  --shadow-dropdown: 0 10px 15px -3px oklch(0 0 0 / 0.1), 0 4px 6px -4px oklch(0 0 0 / 0.1);
+  --shadow-dialog: 0 25px 50px -12px oklch(0 0 0 / 0.25);
+
+  /* Soft shadows */
+  --shadow-soft-xs: 0 2px 4px -1px oklch(0 0 0 / 0.06);
+  --shadow-soft-sm: 0 2px 8px -2px oklch(0 0 0 / 0.08);
+  --shadow-soft: 0 4px 12px -4px oklch(0 0 0 / 0.1);
+  --shadow-soft-md: 0 6px 16px -6px oklch(0 0 0 / 0.12);
+  --shadow-soft-lg: 0 10px 24px -8px oklch(0 0 0 / 0.14);
+
+  /* Lift shadows for hover states */
+  --shadow-lift-sm: 0 4px 8px -2px oklch(0 0 0 / 0.12), 0 2px 4px -1px oklch(0 0 0 / 0.08);
+  --shadow-lift: 0 8px 16px -4px oklch(0 0 0 / 0.14), 0 4px 6px -2px oklch(0 0 0 / 0.1);
+
+  /* Glow shadows */
+  --shadow-glow-primary: 0 0 0 3px oklch(0.55 0.15 250 / 0.15);
+  --shadow-glow-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.15);
+  --shadow-glow-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.15);
+  --shadow-glow-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.15);
+
+  /* Input-specific backgrounds */
+  --color-input-bg: oklch(0.985 0 0);
+  --color-input-bg-hover: oklch(0.97 0 0);
+
+  /* Focus glow shadow */
+  --shadow-focus: 0 0 0 3px oklch(0.55 0.15 250 / 0.2);
+
+  /* Selection state (for checkbox/radio) */
+  --color-selection-bg: oklch(0.55 0.15 250 / 0.08);
+
+  /* ===== Light mode colors ===== */
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.145 0 0);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.145 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.145 0 0);
+  --color-primary: oklch(0.205 0 0);
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-secondary: oklch(0.97 0 0);
+  --color-secondary-foreground: oklch(0.205 0 0);
+  --color-muted: oklch(0.97 0 0);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: oklch(0.97 0 0);
+  --color-accent-foreground: oklch(0.205 0 0);
+  --color-destructive: oklch(0.60 0.18 25);
+  --color-destructive-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0.90 0 0);
+  --color-input: oklch(0.90 0 0);
+  --color-ring: oklch(0.205 0 0);
+
+  /* Semantic state colors */
+  --color-success: oklch(0.60 0.16 145);
+  --color-success-foreground: oklch(0.985 0 0);
+  --color-success-soft: oklch(0.97 0.02 145);
+  --color-success-soft-foreground: oklch(0.40 0.10 145);
+
+  --color-warning: oklch(0.75 0.15 60);
+  --color-warning-foreground: oklch(0.145 0 0);
+  --color-warning-soft: oklch(0.98 0.02 60);
+  --color-warning-soft-foreground: oklch(0.45 0.10 60);
+
+  --color-error: oklch(0.60 0.18 25);
+  --color-error-foreground: oklch(0.985 0 0);
+  --color-error-soft: oklch(0.97 0.015 25);
+  --color-error-soft-foreground: oklch(0.45 0.14 25);
+
+  --color-info: oklch(0.58 0.15 240);
+  --color-info-foreground: oklch(0.985 0 0);
+  --color-info-soft: oklch(0.97 0.015 240);
+  --color-info-soft-foreground: oklch(0.43 0.11 240);
+}
+
+/* ===== Shadow Utilities ===== */
+@utility shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-input {
+  box-shadow: var(--shadow-input);
+}
+
+@utility shadow-dropdown {
+  box-shadow: var(--shadow-dropdown);
+}
+
+@utility shadow-dialog {
+  box-shadow: var(--shadow-dialog);
+}
+
+@utility shadow-focus {
+  box-shadow: var(--shadow-focus);
+}
+
+@utility shadow-soft-xs {
+  box-shadow: var(--shadow-soft-xs);
+}
+
+@utility shadow-soft-sm {
+  box-shadow: var(--shadow-soft-sm);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-soft-md {
+  box-shadow: var(--shadow-soft-md);
+}
+
+@utility shadow-soft-lg {
+  box-shadow: var(--shadow-soft-lg);
+}
+
+@utility shadow-lift-sm {
+  box-shadow: var(--shadow-lift-sm);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility shadow-glow-primary {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+@utility shadow-glow-success {
+  box-shadow: var(--shadow-glow-success);
+}
+
+@utility shadow-glow-warning {
+  box-shadow: var(--shadow-glow-warning);
+}
+
+@utility shadow-glow-error {
+  box-shadow: var(--shadow-glow-error);
+}
+
+@utility bg-input-bg {
+  background-color: var(--color-input-bg);
+}
+
+@utility bg-input-bg-hover {
+  background-color: var(--color-input-bg-hover);
+}
+
+@utility bg-selection {
+  background-color: var(--color-selection-bg);
+}
+
+/* Semantic background utilities */
+@utility bg-success-soft {
+  background-color: var(--color-success-soft);
+}
+
+@utility bg-warning-soft {
+  background-color: var(--color-warning-soft);
+}
+
+@utility bg-error-soft {
+  background-color: var(--color-error-soft);
+}
+
+@utility bg-info-soft {
+  background-color: var(--color-info-soft);
+}
+
+@utility text-success-soft {
+  color: var(--color-success-soft-foreground);
+}
+
+@utility text-warning-soft {
+  color: var(--color-warning-soft-foreground);
+}
+
+@utility text-error-soft {
+  color: var(--color-error-soft-foreground);
+}
+
+@utility text-info-soft {
+  color: var(--color-info-soft-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* ===== Toast Semantic Styling ===== */
+/* Uses existing design system tokens via Sonner's data-type attribute */
+
+/* Default toast - uses muted tokens */
+[data-sonner-toast] {
+  --toast-icon-bg: var(--color-muted);
+  --toast-icon-color: var(--color-muted-foreground);
+  --toast-title-color: var(--color-foreground);
+  --toast-icon-shadow: none;
+}
+
+/* Success toast - uses success-soft tokens */
+[data-sonner-toast][data-type="success"] {
+  --toast-icon-bg: var(--color-success-soft);
+  --toast-icon-color: var(--color-success);
+  --toast-title-color: var(--color-success-soft-foreground);
+  --toast-icon-shadow: var(--shadow-glow-success);
+}
+
+/* Error toast - uses error-soft tokens */
+[data-sonner-toast][data-type="error"] {
+  --toast-icon-bg: var(--color-error-soft);
+  --toast-icon-color: var(--color-error);
+  --toast-title-color: var(--color-error-soft-foreground);
+  --toast-icon-shadow: var(--shadow-glow-error);
+}
+
+/* Warning toast - uses warning-soft tokens */
+[data-sonner-toast][data-type="warning"] {
+  --toast-icon-bg: var(--color-warning-soft);
+  --toast-icon-color: var(--color-warning);
+  --toast-title-color: var(--color-warning-soft-foreground);
+  --toast-icon-shadow: var(--shadow-glow-warning);
+}
+
+/* Info toast - uses info-soft tokens */
+[data-sonner-toast][data-type="info"] {
+  --toast-icon-bg: var(--color-info-soft);
+  --toast-icon-color: var(--color-info);
+  --toast-title-color: var(--color-info-soft-foreground);
+  --toast-icon-shadow: 0 0 0 3px var(--color-info-soft);
+}
+
+/* Apply title color directly since Tailwind arbitrary values may not work */
+[data-sonner-toast] [data-title] {
+  color: var(--toast-title-color);
+}
+
+/* Action button - override Sonner defaults with design system tokens */
+[data-sonner-toast] [data-button] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  border-radius: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background-color: var(--color-foreground) !important;
+  color: var(--color-background) !important;
+  border: none !important;
+  outline: none;
+  transition: background-color 150ms;
+}
+
+[data-sonner-toast] [data-button]:hover {
+  opacity: 0.9;
+}
+
+/* Cancel button styling */
+[data-sonner-toast] [data-cancel] {
+  background-color: transparent !important;
+  color: var(--color-muted-foreground) !important;
+}
+
+[data-sonner-toast] [data-cancel]:hover {
+  background-color: var(--color-muted) !important;
+}
+
+/* Error icon pulse animation */
+@keyframes toast-glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+[data-sonner-toast][data-type="error"] [data-icon] {
+  animation: toast-glow-pulse 2s ease-in-out infinite;
+}
+
+/* ===== Animations ===== */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@utility animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+@utility animate-indeterminate {
+  animation: indeterminate 1.5s ease-in-out infinite;
+}
+
+/* ===== Dark mode ===== */
+.dark {
+  --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.2);
+  --shadow-card: 0 1px 3px 0 oklch(0 0 0 / 0.3), 0 1px 2px -1px oklch(0 0 0 / 0.3);
+  --shadow-input: inset 0 1px 2px oklch(0 0 0 / 0.2);
+  --shadow-dropdown: 0 10px 15px -3px oklch(0 0 0 / 0.35), 0 4px 6px -4px oklch(0 0 0 / 0.35);
+  --shadow-dialog: 0 25px 50px -12px oklch(0 0 0 / 0.5);
+
+  --shadow-soft-xs: 0 2px 4px -1px oklch(0 0 0 / 0.25);
+  --shadow-soft-sm: 0 2px 8px -2px oklch(0 0 0 / 0.3);
+  --shadow-soft: 0 4px 12px -4px oklch(0 0 0 / 0.35);
+  --shadow-soft-md: 0 6px 16px -6px oklch(0 0 0 / 0.4);
+  --shadow-soft-lg: 0 10px 24px -8px oklch(0 0 0 / 0.45);
+
+  --shadow-lift-sm: 0 4px 8px -2px oklch(0 0 0 / 0.4), 0 2px 4px -1px oklch(0 0 0 / 0.35);
+  --shadow-lift: 0 8px 16px -4px oklch(0 0 0 / 0.45), 0 4px 6px -2px oklch(0 0 0 / 0.4);
+
+  --shadow-glow-primary: 0 0 0 3px oklch(0.985 0 0 / 0.2);
+  --shadow-glow-success: 0 0 0 3px oklch(0.60 0.16 145 / 0.25);
+  --shadow-glow-warning: 0 0 0 3px oklch(0.75 0.15 60 / 0.25);
+  --shadow-glow-error: 0 0 0 3px oklch(0.60 0.18 25 / 0.25);
+
+  /* Dark mode input backgrounds */
+  --color-input-bg: oklch(0.20 0 0);
+  --color-input-bg-hover: oklch(0.24 0 0);
+
+  /* Dark mode focus glow */
+  --shadow-focus: 0 0 0 3px oklch(0.985 0 0 / 0.25);
+
+  /* Dark mode selection state */
+  --color-selection-bg: oklch(0.985 0 0 / 0.1);
+
+  --color-background: oklch(0.09 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.09 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-popover: oklch(0.13 0 0);
+  --color-popover-foreground: oklch(0.985 0 0);
+  --color-primary: oklch(0.985 0 0);
+  --color-primary-foreground: oklch(0.09 0 0);
+  --color-secondary: oklch(0.20 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.20 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-accent: oklch(0.20 0 0);
+  --color-accent-foreground: oklch(0.985 0 0);
+  --color-destructive: oklch(0.55 0.18 25);
+  --color-destructive-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0.20 0 0);
+  --color-input: oklch(0.20 0 0);
+  --color-ring: oklch(0.55 0 0);
+
+  /* Dark mode semantic state colors */
+  --color-success: oklch(0.60 0.16 145);
+  --color-success-foreground: oklch(0.09 0 0);
+  --color-success-soft: oklch(0.20 0.03 145);
+  --color-success-soft-foreground: oklch(0.75 0.10 145);
+
+  --color-warning: oklch(0.75 0.15 60);
+  --color-warning-foreground: oklch(0.09 0 0);
+  --color-warning-soft: oklch(0.20 0.03 60);
+  --color-warning-soft-foreground: oklch(0.80 0.10 60);
+
+  --color-error: oklch(0.60 0.18 25);
+  --color-error-foreground: oklch(0.985 0 0);
+  --color-error-soft: oklch(0.20 0.03 25);
+  --color-error-soft-foreground: oklch(0.75 0.12 25);
+
+  --color-info: oklch(0.58 0.15 240);
+  --color-info-foreground: oklch(0.09 0 0);
+  --color-info-soft: oklch(0.20 0.03 240);
+  --color-info-soft-foreground: oklch(0.75 0.10 240);
+}
