@@ -120,6 +120,7 @@ export function ChangePasswordForm() {
               startIcon={
                 <FontAwesomeIcon icon={faLock} className="h-4 w-4" />
               }
+              endIcon={toggleIcon}
             />
           </FormField>
 
@@ -135,6 +136,7 @@ export function ChangePasswordForm() {
               startIcon={
                 <FontAwesomeIcon icon={faLock} className="h-4 w-4" />
               }
+              endIcon={toggleIcon}
             />
           </FormField>
 

@@ -16,6 +16,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  FontAwesomeIcon,
+  faUser,
   toast,
 } from "@repo/ui";
 
@@ -43,13 +45,11 @@ export function ProfileForm({ user }: ProfileFormProps) {
     },
   });
 
-  const displayName = name || user.name;
-  const initials = displayName
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2);
+  const displayName = name?.trim() || user.name;
+  const nameSegments = displayName.split(" ").filter((s) => s.length > 0);
+  const initials = nameSegments.length > 0
+    ? nameSegments.map((n) => n[0]).join("").toUpperCase().slice(0, 2)
+    : user.email[0]?.toUpperCase() || null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,14 +67,16 @@ export function ProfileForm({ user }: ProfileFormProps) {
     <Card>
       <CardHeader>
         <CardTitle>Profile Information</CardTitle>
-        <CardDescription>Update your name and profile picture.</CardDescription>
+        <CardDescription>Update your display name.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex items-center gap-4">
             <Avatar size="lg">
               {user.image && <AvatarImage src={user.image} alt={displayName} />}
-              <AvatarFallback>{initials}</AvatarFallback>
+              <AvatarFallback>
+                {initials ?? <FontAwesomeIcon icon={faUser} className="h-5 w-5" />}
+              </AvatarFallback>
             </Avatar>
             <div>
               <p className="font-medium">{displayName}</p>

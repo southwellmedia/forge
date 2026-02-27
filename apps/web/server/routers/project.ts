@@ -60,6 +60,7 @@ export const projectRouter = createTRPCRouter({
         .set({ ...data, updatedAt: new Date() })
         .where(and(eq(projects.id, id), eq(projects.userId, ctx.session.user.id)))
         .returning();
+      if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Project not found" });
       return updated;
     }),
 

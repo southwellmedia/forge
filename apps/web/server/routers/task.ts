@@ -4,6 +4,31 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { tasks, projects } from "@repo/db/schema";
 import { eq, and, desc } from "drizzle-orm";
 import { TASK_STATUSES, TASK_PRIORITIES } from "@repo/utils/constants";
+import type { Database } from "@repo/db/client";
+
+async function verifyTaskOwnership(
+  db: Database,
+  taskId: string,
+  userId: string
+) {
+  const [task] = await db
+    .select()
+    .from(tasks)
+    .where(eq(tasks.id, taskId))
+    .limit(1);
+  if (!task)
+    throw new TRPCError({ code: "NOT_FOUND", message: "Task not found" });
+  const [project] = await db
+    .select({ id: projects.id })
+    .from(projects)
+    .where(
+      and(eq(projects.id, task.projectId), eq(projects.userId, userId))
+    )
+    .limit(1);
+  if (!project)
+    throw new TRPCError({ code: "FORBIDDEN", message: "Not authorized" });
+  return task;
+}
 
 export const taskRouter = createTRPCRouter({
   listByProject: protectedProcedure
@@ -47,11 +72,7 @@ export const taskRouter = createTRPCRouter({
     }))
     .mutation(async ({ ctx, input }) => {
       const { id, ...data } = input;
-      const [task] = await ctx.db.select().from(tasks).where(eq(tasks.id, id)).limit(1);
-      if (!task) throw new TRPCError({ code: "NOT_FOUND", message: "Task not found" });
-      const [project] = await ctx.db.select({ id: projects.id }).from(projects)
-        .where(and(eq(projects.id, task.projectId), eq(projects.userId, ctx.session.user.id))).limit(1);
-      if (!project) throw new TRPCError({ code: "FORBIDDEN", message: "Not authorized" });
+      await verifyTaskOwnership(ctx.db, id, ctx.session.user.id);
       const [updated] = await ctx.db.update(tasks).set({ ...data, updatedAt: new Date() })
         .where(eq(tasks.id, id)).returning();
       return updated;
@@ -60,11 +81,7 @@ export const taskRouter = createTRPCRouter({
   updateStatus: protectedProcedure
     .input(z.object({ id: z.string(), status: z.enum(TASK_STATUSES) }))
     .mutation(async ({ ctx, input }) => {
-      const [task] = await ctx.db.select().from(tasks).where(eq(tasks.id, input.id)).limit(1);
-      if (!task) throw new TRPCError({ code: "NOT_FOUND", message: "Task not found" });
-      const [project] = await ctx.db.select({ id: projects.id }).from(projects)
-        .where(and(eq(projects.id, task.projectId), eq(projects.userId, ctx.session.user.id))).limit(1);
-      if (!project) throw new TRPCError({ code: "FORBIDDEN", message: "Not authorized" });
+      await verifyTaskOwnership(ctx.db, input.id, ctx.session.user.id);
       const [updated] = await ctx.db.update(tasks)
         .set({ status: input.status, updatedAt: new Date() })
         .where(eq(tasks.id, input.id)).returning();
@@ -74,11 +91,7 @@ export const taskRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      const [task] = await ctx.db.select().from(tasks).where(eq(tasks.id, input.id)).limit(1);
-      if (!task) throw new TRPCError({ code: "NOT_FOUND", message: "Task not found" });
-      const [project] = await ctx.db.select({ id: projects.id }).from(projects)
-        .where(and(eq(projects.id, task.projectId), eq(projects.userId, ctx.session.user.id))).limit(1);
-      if (!project) throw new TRPCError({ code: "FORBIDDEN", message: "Not authorized" });
+      await verifyTaskOwnership(ctx.db, input.id, ctx.session.user.id);
       const [deleted] = await ctx.db.delete(tasks).where(eq(tasks.id, input.id)).returning();
       return deleted;
     }),

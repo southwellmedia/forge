@@ -1,15 +1,34 @@
-import { Container } from "@repo/ui";
+import { getCurrentUser } from "@repo/auth/dal";
+import { redirect } from "next/navigation";
+import { AppSidebar } from "./app-sidebar";
 
-export default function ProtectedLayout({
+export const dynamic = "force-dynamic";
+
+export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
   return (
-    <div className="min-h-screen bg-background">
-      <Container size="xl" className="py-8">
-        {children}
-      </Container>
+    <div className="flex h-screen overflow-hidden bg-background">
+      <AppSidebar
+        user={{
+          name: user.name,
+          email: user.email,
+          image: user.image ?? null,
+        }}
+      />
+      <main className="flex-1 min-w-0 overflow-y-auto">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }

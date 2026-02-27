@@ -28,18 +28,23 @@ export function VerifyEmailContent() {
   useEffect(() => {
     if (!token) return;
 
+    setStatus("verifying");
+    let aborted = false;
+
     authClient
       .verifyEmail({ query: { token } })
       .then((result) => {
-        if (result.error) {
-          setStatus("error");
-        } else {
-          setStatus("success");
-        }
+        if (aborted) return;
+        setStatus(result.error ? "error" : "success");
       })
       .catch(() => {
+        if (aborted) return;
         setStatus("error");
       });
+
+    return () => {
+      aborted = true;
+    };
   }, [token]);
 
   useEffect(() => {

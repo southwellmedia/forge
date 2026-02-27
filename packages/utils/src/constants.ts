@@ -14,6 +14,7 @@ export const ROUTES = {
   RESET_PASSWORD: "/reset-password",
   VERIFY_EMAIL: "/verify-email",
   DASHBOARD: "/dashboard",
+  PROJECTS: "/projects",
   SETTINGS: "/settings",
 } as const;
 
@@ -25,7 +26,7 @@ export const AUTH_ROUTES = [
   ROUTES.VERIFY_EMAIL,
 ] as const;
 
-export const PROTECTED_ROUTES = [ROUTES.DASHBOARD, ROUTES.SETTINGS] as const;
+export const PROTECTED_ROUTES = [ROUTES.DASHBOARD, ROUTES.PROJECTS, ROUTES.SETTINGS] as const;
 
 export const DEFAULT_REDIRECT_AFTER_LOGIN = ROUTES.DASHBOARD;
 export const DEFAULT_REDIRECT_AFTER_LOGOUT = ROUTES.HOME;
