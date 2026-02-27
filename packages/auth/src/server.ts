@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { getDb } from "@repo/db/client";
+import { ROLE_USER } from "@repo/utils/constants";
 
 let _auth: ReturnType<typeof betterAuth> | null = null;
 
@@ -21,7 +22,7 @@ export function getAuth() {
       additionalFields: {
         role: {
           type: "string",
-          defaultValue: "user",
+          defaultValue: ROLE_USER,
           input: false,
         },
       },

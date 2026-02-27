@@ -1,6 +1,11 @@
 export const APP_NAME = "Forge";
 export const APP_DESCRIPTION = "Production-ready Next.js monorepo boilerplate";
 
+export const ROLES = ["user", "admin"] as const;
+export type Role = (typeof ROLES)[number];
+export const ROLE_USER: Role = "user";
+export const ROLE_ADMIN: Role = "admin";
+
 export const ROUTES = {
   HOME: "/",
   LOGIN: "/login",

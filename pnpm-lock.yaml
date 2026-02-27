@@ -172,6 +172,12 @@ importers:
       '@neondatabase/serverless':
         specifier: ^0.10.4
         version: 0.10.4
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../utils
+      better-auth:
+        specifier: ^1.4.18
+        version: 1.4.18(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.2.0)(kysely@0.28.10)(postgres@3.4.8))(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       drizzle-orm:
         specifier: ^0.45.1
         version: 0.45.1(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.2.0)(kysely@0.28.10)(postgres@3.4.8)
@@ -185,9 +191,6 @@ importers:
       '@types/node':
         specifier: ^22.10.7
         version: 22.19.7
-      better-auth:
-        specifier: ^1.4.18
-        version: 1.4.18(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.2.0)(kysely@0.28.10)(postgres@3.4.8))(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       drizzle-kit:
         specifier: ^0.31.8
         version: 0.31.8
