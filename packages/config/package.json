@@ -8,10 +8,12 @@
     "./eslint/next": "./eslint/next.js",
     "./typescript/base": "./typescript/base.json",
     "./typescript/next": "./typescript/next.json",
-    "./tailwind/base": "./tailwind/base.ts"
+    "./tailwind/base": "./tailwind/base.ts",
+    "./vitest": "./vitest.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^4.0.18"
   }
 }

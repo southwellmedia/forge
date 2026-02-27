@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@eslint/js": "^9.18.0",
     "@next/eslint-plugin-next": "^16.1.6",
+    "@playwright/test": "^1.58.2",
     "@repo/config": "workspace:*",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.10.7",
@@ -47,6 +50,7 @@
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.20.0",
+    "vitest": "^4.0.18"
   }
 }

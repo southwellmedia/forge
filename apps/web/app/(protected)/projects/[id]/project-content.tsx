@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import {
@@ -9,9 +8,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
   Divider,
   Fade,
   Progress,
@@ -104,7 +100,6 @@ export function ProjectContent({
   project,
   tasks: initialTasks,
 }: ProjectContentProps) {
-  const router = useRouter();
   const [currentTasks, setCurrentTasks] = useState(initialTasks);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState("");
