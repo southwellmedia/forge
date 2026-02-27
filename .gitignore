@@ -38,7 +38,7 @@ coverage
 # Playwright
 test-results/
 playwright-report/
-e2e/.auth/
+**/e2e/.auth/
 
 # TypeScript
 *.tsbuildinfo

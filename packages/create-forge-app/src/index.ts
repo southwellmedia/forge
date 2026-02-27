@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as p from "@clack/prompts";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -18,8 +18,8 @@ async function main() {
           placeholder: "my-forge-app",
           validate(value) {
             if (!value) return "Project name is required";
-            if (!/^[a-z0-9-]+$/.test(value))
-              return "Use lowercase letters, numbers, and hyphens only";
+            if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value))
+              return "Use lowercase letters, numbers, and hyphens only (cannot start or end with a hyphen)";
             if (fs.existsSync(value))
               return `Directory "${value}" already exists`;
           },
@@ -50,7 +50,7 @@ async function main() {
   // Clone the template
   s.start("Cloning Forge template");
   try {
-    execSync(`git clone --depth 1 ${REPO_URL} ${project.name}`, {
+    execFileSync("git", ["clone", "--depth", "1", REPO_URL, project.name], {
       stdio: "pipe",
     });
     // Remove .git directory so user starts fresh
@@ -82,7 +82,7 @@ async function main() {
   if (project.install) {
     s.start("Installing dependencies");
     try {
-      execSync("pnpm install", {
+      execFileSync("pnpm", ["install"], {
         cwd: project.name,
         stdio: "pipe",
       });
@@ -98,12 +98,12 @@ async function main() {
   // Initialize git
   s.start("Initializing git repository");
   try {
-    execSync(
-      "git init && git add -A && git commit -m 'Initial commit from create-forge-app'",
-      {
-        cwd: project.name,
-        stdio: "pipe",
-      }
+    execFileSync("git", ["init"], { cwd: project.name, stdio: "pipe" });
+    execFileSync("git", ["add", "-A"], { cwd: project.name, stdio: "pipe" });
+    execFileSync(
+      "git",
+      ["commit", "-m", "Initial commit from create-forge-app"],
+      { cwd: project.name, stdio: "pipe" }
     );
   } catch {
     // Non-critical — git init might fail if git isn't installed
@@ -130,4 +130,7 @@ async function main() {
   p.outro(`${project.name} is ready!`);
 }
 
-main().catch(console.error);
+main().catch((err) => {
+  console.error(err);
+  process.exitCode = 1;
+});

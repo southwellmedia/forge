@@ -75,5 +75,5 @@ Docker deferred — deploying to Vercel.
 
 ### v1 scope:
 - Full stack scaffold only (no feature toggling)
-- Template stored within the package
+- Clones from the Forge GitHub repository (`southwellmedia/forge`)
 - Feature selection deferred to v2

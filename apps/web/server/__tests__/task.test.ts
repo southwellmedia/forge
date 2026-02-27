@@ -1,5 +1,4 @@
 import { describe, it, expect } from "vitest";
-import { TRPCError } from "@trpc/server";
 import { createTestContext, createCaller } from "./helpers";
 
 describe("task router", () => {
@@ -9,7 +8,7 @@ describe("task router", () => {
       const caller = createCaller(ctx);
       await expect(
         caller.task.listByProject({ projectId: "p-1" })
-      ).rejects.toThrow(TRPCError);
+      ).rejects.toMatchObject({ code: "UNAUTHORIZED" });
     });
   });
 
@@ -19,7 +18,7 @@ describe("task router", () => {
       const caller = createCaller(ctx);
       await expect(
         caller.task.create({ projectId: "p-1", title: "Test" })
-      ).rejects.toThrow(TRPCError);
+      ).rejects.toMatchObject({ code: "UNAUTHORIZED" });
     });
   });
 });

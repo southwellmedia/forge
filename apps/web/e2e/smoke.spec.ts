@@ -7,11 +7,10 @@ test("landing page loads", async ({ page }) => {
 
 test("login page loads", async ({ page }) => {
   await page.goto("/login");
-  await expect(page.getByRole("heading")).toBeVisible();
+  await expect(page.getByRole("heading", { name: /sign in/i })).toBeVisible();
 });
 
 test("unauthenticated user is redirected from dashboard", async ({ page }) => {
   await page.goto("/dashboard");
-  await page.waitForURL(/login/);
-  expect(page.url()).toContain("/login");
+  await expect(page).toHaveURL(/login/);
 });

@@ -1,5 +1,4 @@
 import { describe, it, expect } from "vitest";
-import { TRPCError } from "@trpc/server";
 import { createTestContext, createCaller } from "./helpers";
 
 describe("user router", () => {
@@ -7,7 +6,9 @@ describe("user router", () => {
     it("throws UNAUTHORIZED when no session", async () => {
       const ctx = createTestContext({ session: null });
       const caller = createCaller(ctx);
-      await expect(caller.user.me()).rejects.toThrow(TRPCError);
+      await expect(caller.user.me()).rejects.toMatchObject({
+        code: "UNAUTHORIZED",
+      });
     });
 
     it("returns session user when authenticated", async () => {
