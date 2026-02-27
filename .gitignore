@@ -35,6 +35,11 @@ pnpm-debug.log*
 coverage
 .nyc_output
 
+# Playwright
+test-results/
+playwright-report/
+e2e/.auth/
+
 # TypeScript
 *.tsbuildinfo
 
