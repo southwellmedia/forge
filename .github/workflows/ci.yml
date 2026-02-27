@@ -34,12 +34,16 @@ jobs:
         run: pnpm typecheck
 
       - name: Build
-        run: pnpm build
+        run: turbo build
         env:
           SKIP_ENV_VALIDATION: true
+          DATABASE_URL: postgresql://fake:fake@localhost:5432/fake
+          BETTER_AUTH_SECRET: ci-placeholder-secret-that-is-at-least-32-chars
+          BETTER_AUTH_URL: http://localhost:3000
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
 
       - name: Unit tests
-        run: pnpm test
+        run: turbo test
         env:
           SKIP_ENV_VALIDATION: true
 
