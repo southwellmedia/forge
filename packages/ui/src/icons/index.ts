@@ -109,6 +109,7 @@ export {
   faAt,
   faDollarSign,
   faPercent,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Re-export commonly used regular icons

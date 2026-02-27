@@ -70,7 +70,7 @@ export default function RegisterPage() {
         return;
       }
 
-      router.push("/dashboard");
+      router.push("/verify-email");
       router.refresh();
     } catch {
       setError("An unexpected error occurred");

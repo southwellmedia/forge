@@ -126,7 +126,7 @@ import {
   faAt,
   faDollarSign,
 } from "@repo/ui";
-import { AlertCircle, CheckCircle, Info, AlertTriangle, User, Settings, LogOut, Bell, Heart, CreditCard, Zap, Shield, TrendingUp, TrendingDown, Users, DollarSign, Activity, Check, Star, ArrowRight, Clock, Package, ShoppingCart, Sparkles, Rocket, Globe, Code, Palette, FileText } from "lucide-react";
+import { AlertCircle, CheckCircle, Info, AlertTriangle, User, Settings, LogOut, Bell, Heart, CreditCard, Zap, Shield, Users, DollarSign, Activity, Star, ArrowRight, Clock, Package, Sparkles, Rocket, Globe, Code, Palette } from "lucide-react";
 
 function Section({ title, description, children, className }: { title: string; description?: string; children: React.ReactNode; className?: string }) {
   return (
