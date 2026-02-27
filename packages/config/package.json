@@ -9,7 +9,7 @@
     "./typescript/base": "./typescript/base.json",
     "./typescript/next": "./typescript/next.json",
     "./tailwind/base": "./tailwind/base.ts",
-    "./vitest": "./vitest.ts"
+    "./vitest": "./vitest.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",

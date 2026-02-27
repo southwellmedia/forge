@@ -1,6 +1,7 @@
 import { defineConfig } from "vitest/config";
 
-export function createVitestConfig(overrides: Record<string, unknown> = {}) {
+/** @param {Record<string, unknown>} overrides */
+export function createVitestConfig(overrides = {}) {
   return defineConfig({
     test: {
       globals: true,
