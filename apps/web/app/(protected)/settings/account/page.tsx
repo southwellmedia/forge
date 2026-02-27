@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@repo/auth/dal";
 import { redirect } from "next/navigation";
 import { ChangePasswordForm } from "./change-password-form";
+import { ConnectedAccounts } from "./connected-accounts";
 import { DeleteAccount } from "./delete-account";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +22,7 @@ export default async function AccountPage() {
         </p>
       </div>
       <ChangePasswordForm />
+      <ConnectedAccounts />
       <DeleteAccount />
     </div>
   );
