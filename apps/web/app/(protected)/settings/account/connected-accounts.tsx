@@ -10,6 +10,7 @@ import {
   CardTitle,
   CardDescription,
   FontAwesomeIcon,
+  Skeleton,
   toast,
   faGoogle,
   faGithub,
@@ -120,8 +121,27 @@ export function ConnectedAccounts({ enabledProviders }: ConnectedAccountsProps) 
       <Card>
         <CardHeader>
           <CardTitle>Connected Accounts</CardTitle>
-          <CardDescription>Loading...</CardDescription>
+          <CardDescription>
+            Manage your linked social accounts for sign-in.
+          </CardDescription>
         </CardHeader>
+        <CardContent className="space-y-4">
+          {providers.map((provider) => (
+            <div
+              key={provider.id}
+              className="flex items-center justify-between rounded-lg border p-4"
+            >
+              <div className="flex items-center gap-3">
+                <Skeleton variant="circle" className="h-5 w-5" />
+                <div className="space-y-1.5">
+                  <Skeleton className="h-4 w-16" />
+                  <Skeleton className="h-3.5 w-24" />
+                </div>
+              </div>
+              <Skeleton variant="button" className="h-8 w-24" />
+            </div>
+          ))}
+        </CardContent>
       </Card>
     );
   }
