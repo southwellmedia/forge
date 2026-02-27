@@ -59,7 +59,10 @@ async function seedUser(
         providerId: "credential",
         password: passwordHash,
       })
-      .onConflictDoNothing();
+      .onConflictDoUpdate({
+        target: accounts.id,
+        set: { password: passwordHash },
+      });
   }
 }
 

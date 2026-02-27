@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { getDb } from "@repo/db/client";
+import { users, sessions, accounts, verifications } from "@repo/db/schema";
 import { sendEmail } from "@repo/email";
 import { ROLE_USER } from "@repo/utils/constants";
 
@@ -14,6 +15,12 @@ export function getAuth() {
   _auth = betterAuth({
     database: drizzleAdapter(db, {
       provider: "pg",
+      schema: {
+        user: users,
+        session: sessions,
+        account: accounts,
+        verification: verifications,
+      },
     }),
     emailAndPassword: {
       enabled: true,
