@@ -82,10 +82,8 @@ async function seed() {
       role: ROLE_USER,
       passwordEnvVar: "SEED_USER_PASSWORD",
     });
-  });
 
-  // Seed projects and tasks
-  await db.transaction(async (tx) => {
+    // Seed projects and tasks
     // Projects for admin user
     await tx
       .insert(projects)

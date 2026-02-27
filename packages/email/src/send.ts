@@ -54,10 +54,15 @@ export async function sendEmail(params: SendEmailParams): Promise<void> {
 
   const html = await render(component);
 
-  await resend.emails.send({
-    from: FROM_ADDRESS,
-    to,
-    subject,
-    html,
-  });
+  try {
+    await resend.emails.send({
+      from: FROM_ADDRESS,
+      to,
+      subject,
+      html,
+    });
+  } catch (error) {
+    console.error(`[EMAIL ERROR] to=${to} template=${template} subject="${subject}"`, error);
+    throw error;
+  }
 }

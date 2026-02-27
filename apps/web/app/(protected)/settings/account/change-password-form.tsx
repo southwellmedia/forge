@@ -72,6 +72,7 @@ export function ChangePasswordForm() {
       type="button"
       onClick={() => setShowPasswords(!showPasswords)}
       className="text-muted-foreground hover:text-foreground transition-colors"
+      aria-label={showPasswords ? "Hide password" : "Show password"}
     >
       <FontAwesomeIcon
         icon={showPasswords ? faEyeSlash : faEye}

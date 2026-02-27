@@ -1,7 +1,9 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { projects, tasks } from "@repo/db/schema";
 import { eq, and, desc } from "drizzle-orm";
+import { PROJECT_STATUSES } from "@repo/utils/constants";
 
 export const projectRouter = createTRPCRouter({
   list: protectedProcedure
@@ -49,7 +51,7 @@ export const projectRouter = createTRPCRouter({
       id: z.string(),
       name: z.string().min(1).max(100).optional(),
       description: z.string().max(500).optional(),
-      status: z.enum(["active", "archived", "completed"]).optional(),
+      status: z.enum(PROJECT_STATUSES).optional(),
     }))
     .mutation(async ({ ctx, input }) => {
       const { id, ...data } = input;
@@ -68,6 +70,7 @@ export const projectRouter = createTRPCRouter({
         .delete(projects)
         .where(and(eq(projects.id, input.id), eq(projects.userId, ctx.session.user.id)))
         .returning();
+      if (!deleted) throw new TRPCError({ code: "NOT_FOUND", message: "Project not found" });
       return deleted;
     }),
 });

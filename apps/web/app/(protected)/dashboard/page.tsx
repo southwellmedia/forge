@@ -56,7 +56,7 @@ export default async function DashboardPage() {
       .select({ value: count() })
       .from(projects)
       .where(eq(projects.userId, user.id)),
-    // Active tasks (todo + in_progress) for user's projects
+    // In-progress tasks for user's projects
     db
       .select({ value: count() })
       .from(tasks)
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
           }
         />
         <StatCard
-          label="Active Tasks"
+          label="In Progress"
           value={activeTasks}
           icon={
             <FontAwesomeIcon icon={faBolt} className="h-4 w-4 text-muted-foreground" />

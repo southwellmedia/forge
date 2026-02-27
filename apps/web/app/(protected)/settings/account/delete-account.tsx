@@ -67,7 +67,16 @@ export function DeleteAccount() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog
+          open={open}
+          onOpenChange={(value) => {
+            setOpen(value);
+            if (!value) {
+              setConfirmation("");
+              setError("");
+            }
+          }}
+        >
           <DialogTrigger asChild>
             <Button variant="destructive">Delete account</Button>
           </DialogTrigger>

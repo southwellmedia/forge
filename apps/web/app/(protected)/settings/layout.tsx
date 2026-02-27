@@ -36,6 +36,7 @@ export default function SettingsLayout({
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
                   pathname === item.href
                     ? "bg-muted font-medium text-foreground"

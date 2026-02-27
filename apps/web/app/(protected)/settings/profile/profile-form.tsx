@@ -43,7 +43,8 @@ export function ProfileForm({ user }: ProfileFormProps) {
     },
   });
 
-  const initials = user.name
+  const displayName = name || user.name;
+  const initials = displayName
     .split(" ")
     .map((n) => n[0])
     .join("")
@@ -72,11 +73,11 @@ export function ProfileForm({ user }: ProfileFormProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex items-center gap-4">
             <Avatar size="lg">
-              {user.image && <AvatarImage src={user.image} alt={user.name} />}
+              {user.image && <AvatarImage src={user.image} alt={displayName} />}
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
             <div>
-              <p className="font-medium">{user.name}</p>
+              <p className="font-medium">{displayName}</p>
               <p className="text-sm text-muted-foreground">{user.email}</p>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { authClient } from "@repo/auth/client";
 import {
   Card,
@@ -18,6 +18,7 @@ import {
 
 export function VerifyEmailContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const token = searchParams.get("token");
 
   const [status, setStatus] = useState<
@@ -40,6 +41,12 @@ export function VerifyEmailContent() {
         setStatus("error");
       });
   }, [token]);
+
+  useEffect(() => {
+    if (status !== "success") return;
+    const timeout = setTimeout(() => router.push("/dashboard"), 3000);
+    return () => clearTimeout(timeout);
+  }, [status, router]);
 
   if (status === "no-token") {
     return (
@@ -94,7 +101,8 @@ export function VerifyEmailContent() {
           </div>
           <CardTitle className="text-2xl">Email verified</CardTitle>
           <CardDescription>
-            Your email has been verified successfully.
+            Your email has been verified successfully. Redirecting to
+            dashboard...
           </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
