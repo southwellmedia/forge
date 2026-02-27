@@ -21,7 +21,7 @@ interface LinkedAccount {
   accountId: string;
 }
 
-const PROVIDERS = [
+const ALL_PROVIDERS = [
   {
     id: "google",
     name: "Google",
@@ -34,7 +34,12 @@ const PROVIDERS = [
   },
 ] as const;
 
-export function ConnectedAccounts() {
+interface ConnectedAccountsProps {
+  enabledProviders: readonly string[];
+}
+
+export function ConnectedAccounts({ enabledProviders }: ConnectedAccountsProps) {
+  const providers = ALL_PROVIDERS.filter((p) => enabledProviders.includes(p.id));
   const [accounts, setAccounts] = useState<LinkedAccount[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
@@ -130,7 +135,7 @@ export function ConnectedAccounts() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {PROVIDERS.map((provider) => {
+        {providers.map((provider) => {
           const connected = isConnected(provider.id);
           const isLoading = actionLoading === provider.id;
 

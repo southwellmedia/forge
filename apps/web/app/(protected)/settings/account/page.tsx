@@ -6,6 +6,15 @@ import { DeleteAccount } from "./delete-account";
 
 export const dynamic = "force-dynamic";
 
+const enabledProviders = [
+  ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
+    ? ["google" as const]
+    : []),
+  ...(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET
+    ? ["github" as const]
+    : []),
+];
+
 export default async function AccountPage() {
   const user = await getCurrentUser();
 
@@ -22,7 +31,9 @@ export default async function AccountPage() {
         </p>
       </div>
       <ChangePasswordForm />
-      <ConnectedAccounts />
+      {enabledProviders.length > 0 && (
+        <ConnectedAccounts enabledProviders={enabledProviders} />
+      )}
       <DeleteAccount />
     </div>
   );
