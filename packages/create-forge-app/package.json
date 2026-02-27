@@ -1,0 +1,22 @@
+{
+  "name": "create-forge-app",
+  "version": "0.1.0",
+  "description": "Create a new Forge application",
+  "type": "module",
+  "bin": {
+    "create-forge-app": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --clean",
+    "dev": "tsup src/index.ts --format esm --watch"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.0"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.3"
+  }
+}
