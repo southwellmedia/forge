@@ -1,6 +1,8 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { getDb } from "@repo/db/client";
+import { users, sessions, accounts, verifications } from "@repo/db/schema";
+import { sendEmail } from "@repo/email";
 import { ROLE_USER } from "@repo/utils/constants";
 
 let _auth: ReturnType<typeof betterAuth> | null = null;
@@ -13,10 +15,40 @@ export function getAuth() {
   _auth = betterAuth({
     database: drizzleAdapter(db, {
       provider: "pg",
+      schema: {
+        user: users,
+        session: sessions,
+        account: accounts,
+        verification: verifications,
+      },
     }),
     emailAndPassword: {
       enabled: true,
-      requireEmailVerification: false,
+      requireEmailVerification: true,
+      async sendResetPassword({ user, url }) {
+        await sendEmail({
+          to: user.email,
+          template: "reset-password",
+          props: {
+            name: user.name,
+            resetUrl: url,
+          },
+        });
+      },
+    },
+    emailVerification: {
+      sendOnSignUp: true,
+      autoSignInAfterVerification: true,
+      async sendVerificationEmail({ user, url }) {
+        await sendEmail({
+          to: user.email,
+          template: "verify-email",
+          props: {
+            name: user.name,
+            verificationUrl: url,
+          },
+        });
+      },
     },
     user: {
       additionalFields: {

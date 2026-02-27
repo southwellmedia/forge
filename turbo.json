@@ -7,6 +7,7 @@
     "BETTER_AUTH_SECRET",
     "BETTER_AUTH_URL"
   ],
+  "globalPassThroughEnv": ["*"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -34,6 +35,12 @@
     "db:studio": {
       "cache": false,
       "persistent": true
+    },
+    "db:seed": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false
     }
   }
 }

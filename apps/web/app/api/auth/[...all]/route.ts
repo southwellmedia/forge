@@ -1,14 +1,10 @@
 import { toNextJsHandler } from "better-auth/next-js";
+import { getAuth } from "@repo/auth/server";
 
 export const dynamic = "force-dynamic";
 
-async function getAuth() {
-  const { auth } = await import("@repo/auth/server");
-  return auth;
-}
-
 const handler = async (request: Request) => {
-  const auth = await getAuth();
+  const auth = getAuth();
   const handlers = toNextJsHandler(auth);
 
   if (request.method === "GET") {
