@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@repo/db": "workspace:*",
+    "@repo/utils": "workspace:*",
     "better-auth": "^1.4.18"
   },
   "peerDependencies": {

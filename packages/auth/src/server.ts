@@ -17,6 +17,15 @@ export function getAuth() {
       enabled: true,
       requireEmailVerification: false,
     },
+    user: {
+      additionalFields: {
+        role: {
+          type: "string",
+          defaultValue: "user",
+          input: false,
+        },
+      },
+    },
     socialProviders: {
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID ?? "",
