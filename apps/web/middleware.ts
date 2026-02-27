@@ -5,4 +5,8 @@ export function middleware(request: NextRequest) {
   return authMiddleware(request);
 }
 
-export { config } from "@repo/auth/middleware";
+export const config = {
+  matcher: [
+    "/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\..*|_next).*)",
+  ],
+};
